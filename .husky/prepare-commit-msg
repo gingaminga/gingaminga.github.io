@@ -1,0 +1,28 @@
+#!/bin/sh
+
+if [ "$2" = "merge" ] || [ "$2" = "squash" ]; then
+  exit 0
+fi
+
+# 커밋 메시지 파일 경로
+commit_msg_file=$1
+
+# 커밋 메시지 파일 내용 가져오기
+commit_msg=$(cat "$commit_msg_file")
+
+# 커밋 메시지 타입 추출
+type=$(echo "$commit_msg" | sed -nE 's/^([a-z]+):.*/\1/p')
+
+# 이모지 선택
+emoji=""
+case "$type" in
+  init) emoji="🎉";;
+  post) emoji="✨";;
+  fix) emoji="🐛";;
+  setting) emoji="🔧";;
+  *)
+    emoji="";;
+esac
+
+# 이모지를 추가
+echo "$emoji $commit_msg" > "$commit_msg_file"
