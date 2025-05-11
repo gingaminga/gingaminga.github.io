@@ -17,10 +17,11 @@ type=$(echo "$commit_msg" | sed -nE 's/^([a-z]+):.*/\1/p')
 emoji=""
 case "$type" in
   init) emoji="🎉";;
-  post) emoji="✨";;
+  post) emoji="✏️";;
+  update) emoji="🔧";;
   fix) emoji="🐛";;
   remove) emoji="🔥";;
-  setting) emoji="🔧";;
+  setting) emoji="⚙️";;
   *)
     emoji="";;
 esac
