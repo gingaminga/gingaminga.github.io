@@ -1,0 +1,112 @@
+---
+title: 내 마음대로 깃허브 블로그 꾸미기
+---
+
+보다보니 변경하고 싶은 것들이 생겼다.  
+파비콘부터 시작해서.. 사이드바 하단의 소셜 아이콘 등등..
+
+## 파비콘 변경하기
+
+[Jekyll Theme Chirpy 파비콘 변경 공식 문서](https://chirpy.cotes.page/posts/customize-the-favicon/)를 참고해서 파비콘을 바꿨다.  
+근데 공식문서에서 추천하는 파비콘 사이트는 이미지가 있어야하는데, 나는 마땅한 파비콘 이미지가 없어서 [다른 파비콘 사이트](https://favicon.io/)에서 쉽게 만들었다.
+> `mstile-150x150.png` 파일은 없어서 gpt한테 512를 150으로 만들어달라고 했어요 :)
+
+`assets/img/favicons`에서 아래 두 파일은 제외하고 모두 바꾸면 끝!
+- `browserconfig.xml`
+- `site.webmanifest`
+
+## 사이드바 메뉴에서 아이콘 제거하기
+
+메뉴에 있는 아이콘이 없었으면 좋겠다는 생각이 들었다.  
+`includes/sidebar.html`에서 아이콘을 보여주는 부분을 주석 or 삭제한다.
+
+{% raw %} 
+```html
+  <nav class="flex-column flex-grow-1 w-100 ps-0">
+    <ul class="nav">
+      <!-- home -->
+      <li class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
+        <a href="{{ '/' | relative_url }}" class="nav-link">
+          <i class="fa-fw fas fa-home"></i> {/* 👈 주석 또는 삭제 */}
+          <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
+        </a>
+      </li>
+      <!-- the real tabs -->
+      {% for tab in site.tabs %}
+        <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
+          <a href="{{ tab.url | relative_url }}" class="nav-link">
+            <i class="fa-fw {{ tab.icon }}"></i> {/* 👈 주석 또는 삭제 */}
+            {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+
+            <span>{{ site.data.locales[include.lang].tabs[tab_name] | default: tab.title | upcase }}</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      {% endfor %}
+    </ul>
+  </nav>
+```
+{% endraw %}
+
+## 사이드바 배경 이미지 넣기
+
+기본적으로 테마색상이 들어가는데, 조금 밋밋해 보여 이미지를 넣고 싶었다.
+
+일단 `assets/img` 하위에 배경화면으로 쓸 파일을 넣는다.  
+가로가 `300px`이면 좋긴한데, 이미지가 짤려도 괜찮으면 더 큰거 써도 된다.(~~저는 짤려요 ㅎㅎ~~)
+
+그리고 `_sass/layout/_sidebar.scss`에서 아래처럼 변경하면 끝!
+
+```scss
+#sidebar {
+  // background: var(--sidebar-bg); /* 👈 기존 내용 주석 */
+  background-image: url('/assets/img/sidebar-bg.jpg'); /* 이미지 경로 */
+  background-size: cover; /* 이미지 꽉차게 설정하기 */
+  background-repeat: no-repeat; /* 이미지 크기가 안 맞는 경우에 이미지가 반복되게 나오지 않게 하기 */
+}
+```
+
+## 사이드바 하단의 버튼 노출 여부
+
+나는 트위터나 RSS는 딱히 필요없다는 생각이 들었다.  
+확인해보니 `_data/contact.yml`의 정보를 보여주고 있었다.  
+필요없는건 주석처리하면 된다.  
+
+> 혹시 추가하고 싶은 주소가 있으면, 아이콘은 [Font Awesome](https://fontawesome.com/search)에서 이용하면 된다.
+
+## 글 공유하기에서 버튼 노출 여부
+
+마찬가지로 글을 공유하는 기능에서 URL copy 기능만 있으면 좋겠다.  
+`_data/share.yml`의 정보를 보여주고 있었다.  
+필요없는건 주석처리하면 된다.  
+
+> 카카오 공유하기 아이콘이 있나 찾아봤는데 없네요..ㅠㅠ 라인은 있던데..
+
+## Chirpy theme를 사용한다는 문구 제거
+
+블로그 제일 하단에 `Using the Chirpy theme for Jekyll.`라는 문구가 있는데 없애고싶다.  
+근데 프로젝트에서 아무리 검색해도 안 나오길래 찾아보니, [Footer 수정하기](https://www.irgroup.org/posts/Chirpy-%ED%85%8C%EB%A7%88-%EC%BB%A4%EC%8A%A4%ED%84%B0%EB%A7%88%EC%9D%B4%EC%A7%95/#footer-%EC%88%98%EC%A0%95-%ED%95%98%EA%B8%B0)에서 설명하듯 노출부분을 주석하면 된다.  
+`_inclues/footer.html`에서 보여주는 영역을 주석 or 삭제한다.  
+
+{% raw %} 
+```html
+  <p> {/* 👈 주석 또는 삭제 */}
+    {%- capture _platform -%}
+      <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
+    {%- endcapture -%}
+
+    {%- capture _theme -%}
+      <a
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="v{{ theme.version }}"
+        href="https://github.com/cotes2020/jekyll-theme-chirpy"
+        target="_blank"
+        rel="noopener"
+      >Chirpy</a>
+    {%- endcapture -%}
+
+    {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
+  </p>
+```
+{% endraw %}
