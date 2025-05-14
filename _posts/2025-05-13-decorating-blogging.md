@@ -1,5 +1,5 @@
 ---
-title: 내 마음대로 깃허브 블로그 꾸미기
+title: "[Blog] 내 마음대로 깃허브 블로그 꾸미기 (with Jekyll Theme Chirpy)"
 ---
 
 보다보니 변경하고 싶은 것들이 생겼다.  
