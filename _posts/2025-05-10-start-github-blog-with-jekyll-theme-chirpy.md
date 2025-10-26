@@ -240,3 +240,10 @@ GitHub에서 실시간 상황을 확인할 수 있다.
 ![](https://velog.velcdn.com/images/gingaminga/post/e7ea50cd-95b0-49bc-9b50-154911f8d8b7/image.png)
 
 완료가 돼도 반영하는데 시간이 조금 걸리는데, 대략 5분 후에 자신의 블로그 주소로 들어가서 확인해보자!
+
+--- 
+
+### 변경 이력
+
+2025.10.26
+: - [Git Commit/Push 안 될 때의 대응책](https://gingaminga.github.io/posts/start-github-blog-with-jekyll-theme-chirpy/#%EC%97%85%EB%A1%9C%EB%93%9C)
