@@ -155,7 +155,7 @@ $ bundle exec jekyll serve
 
 ## 설정
 이제 `_config.yml` 파일에 필요한 정보들을 넣어 나만의 블로그로 만들어보자.
-> 제가 수정한 내용들은 [여기서](https://github.com/gingaminga/gingaminga.github.io/commit/953baa35fd39b4c033245115a4d117007e45fa9f) 확인해보세요ㅎㅎ
+> 제가 수정한 내용들은 [여기서](https://github.com/gingaminga/gingaminga.github.io/commit/4e8a4a2e11fdf997ab090bdba13b98fc11cf29b1) 확인해보세요ㅎㅎ
 
 - `lang`: 언어 코드
 - `timezone`: 시간
