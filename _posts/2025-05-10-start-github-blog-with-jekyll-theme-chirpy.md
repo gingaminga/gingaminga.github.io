@@ -214,8 +214,8 @@ tags: [처음글]
 $ git add .
 # 커밋 메시지는 원하는거 적어주세요.
 $ git commit -m "first commit"
-# 원격지에 올리기 (아마 main or master 브랜치)
-$ git push origin [branch name]
+# 원격지에 올리기
+$ git push origin master
 ```
 
 > 💡 만약 commit이 안 된다면?
@@ -225,8 +225,14 @@ $ git push origin [branch name]
 
 > 💡 만약 push가 안 된다면?
 > 
-> `./tools/init.sh`을 수행하는 과정에서, (이유는 모르겠으나) 이전 커밋으로 이동한 후에 작업을 진행해요.
-> 그래서 원격지와 충돌이 나는 상황인데,, 저는 강제 푸시 했어요..ㅎㅎ
+> `./tools/init.sh`을 수행하는 과정에서, (이유는 모르겠으나) 이전 커밋으로 이동한 후에 작업을 진행해요.  
+> 그래서 원격지와 충돌이 나는 상황인데,, 저는 원격지와 merge 하고 push 했어요..ㅎㅎ
+> ```bash
+> # 원격지와 동기화하기
+> $ git merge origin/master
+> # 원격지에 올리기
+> $ git push origin master
+> ```
 
 올리면 자동으로 감지돼서 GitHub Actions CI가 실행된다.  
 GitHub에서 실시간 상황을 확인할 수 있다.
