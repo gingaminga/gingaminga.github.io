@@ -246,4 +246,4 @@ GitHub에서 실시간 상황을 확인할 수 있다.
 ### 변경 이력
 
 2025.10.26
-: - [Git Commit/Push 안 될 때의 대응책](https://gingaminga.github.io/posts/start-github-blog-with-jekyll-theme-chirpy/#%EC%97%85%EB%A1%9C%EB%93%9C)
+: - [Git Commit/Push 안 될 때의 대응책](/posts/start-github-blog-with-jekyll-theme-chirpy/#%EC%97%85%EB%A1%9C%EB%93%9C)
