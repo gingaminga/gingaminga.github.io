@@ -4,7 +4,7 @@ categories: [Blog]
 render_with_liquid: false
 ---
 
-예전에 [구글에 내 블로그 노출시키기](/posts/expose-blog-to-google-with-jekyll-theme-chirpy.md) 글을 썼었다.  
+예전에 [구글에 내 블로그 노출시키기](/posts/expose-blog-to-google-with-jekyll-theme-chirpy) 글을 썼었다.  
 근데 아직도 구글에서 내 블로그 글 검색이 안된다. 아직도 Sitemap을 가져올 수 없다고 한다.. 하..
 
 그래서 네이버도 설정해보려고 한다.
